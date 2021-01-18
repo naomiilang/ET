@@ -159,7 +159,6 @@ addRole = () => {
             }
         }
     ]).then(answers = (userInput) => {
-        console.log(userInput);
         const query = connection.query(
             'INSERT INTO roles SET ?',
             {
@@ -170,7 +169,7 @@ addRole = () => {
             },
             function (err, res) {
                 if (err) throw err;
-                showDept();
+                showRoles();
             }
         );
         console.log(query.sql);
@@ -258,7 +257,6 @@ addEmployee = () => {
             }
         }
     ]).then(answers = (userInput) => {
-        console.log(userInput);
         const query = connection.query(
             'INSERT INTO employees SET ?',
             {
@@ -300,8 +298,6 @@ deleteEmployee = () => {
                     choices: fullName
                 }
             ]).then(convert = (answers) => {
-
-                console.log(answers);
                 let newArray = answers.delEmp.split(' ');
                 connection.query(
                     `DELETE FROM employees WHERE first_name = "${newArray[0]}" AND last_name = "${newArray[1]}"`,
